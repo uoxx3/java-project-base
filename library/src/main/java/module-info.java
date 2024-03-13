@@ -1,0 +1,2 @@
+module library.module.name {
+}

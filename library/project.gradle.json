@@ -1,0 +1,45 @@
+{
+  "name": "<library-name>",
+  "version": "1.0.0",
+  "group": "io.github.uoxx3",
+  "package": "uoxx3",
+  "build-info": {
+    "package-out": "uoxx3.build",
+    "file-name": "build.properties"
+  },
+  "publications": [
+    {
+      "type": "maven",
+      "name": "library-publication",
+      "component": "java",
+      "artifacts": [
+        {
+          "required": false,
+          "task-name": "sourceJar"
+        },
+        {
+          "required": false,
+          "task-name": "javadocJar"
+        }
+      ],
+      "pom": {
+        "url": "",
+        "description": "",
+        "artifact-id": "<library-name>",
+        "licenses": [
+          {
+            "name": "MIT",
+            "value": ""
+          }
+        ],
+        "developers-ref": "developers.maven.json",
+        "scm": {
+          "url": "",
+          "branch": "main",
+          "connection": null,
+          "connection-dev": null
+        }
+      }
+    }
+  ]
+}
