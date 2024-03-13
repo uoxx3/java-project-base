@@ -293,7 +293,7 @@ ij_json_wrap_long_lines = false
 ij_smart_tabs = false
 
 [{*.kt,*.kts}]
-ij_continuation_indent_size = 4
+ij_continuation_indent_size = 2
 ij_kotlin_align_in_columns_case_branch = false
 ij_kotlin_align_multiline_binary_operation = false
 ij_kotlin_align_multiline_extends_list = false
@@ -377,4 +377,3 @@ ij_kotlin_wrap_elvis_expressions = 1
 ij_kotlin_wrap_expression_body_functions = 0
 ij_kotlin_wrap_first_method_in_call_chain = false
 ij_smart_tabs = false
-indent_style = tab

@@ -7,31 +7,31 @@ import kotlin.jvm.optionals.getOrNull
  * To learn more about Gradle by exploring our Samples at https://docs.gradle.org/8.5/samples
  */
 plugins {
-	alias(libs.plugins.javamodularity.moduleplugin) apply false
-	alias(libs.plugins.uoxx3.projectEnvironment)
-	alias(libs.plugins.nexus.publish)
-	// Optional plugins
-	alias(libs.plugins.uoxx3.cjfx) apply false
+  alias(libs.plugins.javamodularity.moduleplugin) apply false
+  alias(libs.plugins.uoxx3.projectEnvironment)
+  alias(libs.plugins.nexus.publish)
+  // Optional plugins
+  alias(libs.plugins.uoxx3.cjfx) apply false
 }
 
 allprojects {
-	// Ignore root project
-	if (this == rootProject) return@allprojects
-	
-	// Apply all common projects
-	apply(plugin = "io.github.uoxx3.project-environment")
-	apply(plugin = "org.javamodularity.moduleplugin")
-	apply(plugin = "org.gradle.maven-publish")
-	apply(plugin = "org.gradle.signing")
+  // Ignore root project
+  if (this == rootProject) return@allprojects
+  
+  // Apply all common projects
+  apply(plugin = "io.github.uoxx3.project-environment")
+  apply(plugin = "org.javamodularity.moduleplugin")
+  apply(plugin = "org.gradle.maven-publish")
+  apply(plugin = "org.gradle.signing")
 }
 
 nexusPublishing {
-	repositories {
-		sonatype {
-			// Configure Maven-Central Sonatype account
-			stagingProfileId.set(projectEnv["OSSRH_SONATYPE_PROFILE_ID"].getOrNull())
-			username.set(projectEnv["OSSRH_SONATYPE_USERNAME"].getOrNull())
-			password.set(projectEnv["OSSRH_SONATYPE_PASSWORD"].getOrNull())
-		}
-	}
+  repositories {
+    sonatype {
+      // Configure Maven-Central Sonatype account
+      stagingProfileId.set(projectEnv["OSSRH_SONATYPE_PROFILE_ID"].getOrNull())
+      username.set(projectEnv["OSSRH_SONATYPE_USERNAME"].getOrNull())
+      password.set(projectEnv["OSSRH_SONATYPE_PASSWORD"].getOrNull())
+    }
+  }
 }

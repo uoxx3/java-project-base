@@ -8,26 +8,27 @@
 rootProject.name = "maven-library-base"
 
 pluginManagement {
-	repositories {
-		mavenLocal() // Only for local testing purposes
-		mavenCentral()
-		google()
-		maven {
-			url = uri("https://plugins.gradle.org/m2/")
-		}
-	}
+  repositories {
+    mavenLocal() // Only for local testing purposes
+    mavenCentral()
+    google()
+    maven {
+      url = uri("https://plugins.gradle.org/m2/")
+    }
+  }
 }
 
 @Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
-	repositories {
-		mavenLocal() // Only for local testing purposes
-		mavenCentral()
-		google()
-		maven {
-			url = uri("https://plugins.gradle.org/m2/")
-		}
-	}
+  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+  repositories {
+    mavenLocal() // Only for local testing purposes
+    mavenCentral()
+    google()
+    maven {
+      url = uri("https://plugins.gradle.org/m2/")
+    }
+  }
 }
 
 /* -----------------------------------------------------
