@@ -104,7 +104,7 @@ private fun configurePom(
   
   // POM License configuration
   pom.licenses {
-    cPom.licenses.forEach { licenseSpec ->
+    cPom.licenses?.forEach { licenseSpec ->
       license {
         name.set(licenseSpec.name)
         url.set(licenseSpec.value)
@@ -114,8 +114,7 @@ private fun configurePom(
   
   // POM Developers configuration
   pom.developers {
-    if (cPom.developers == null) return@developers
-    cPom.developers.forEach { developerSpec ->
+    cPom.developers?.forEach { developerSpec ->
       developer {
         // Required information
         id.set(developerSpec.id)
@@ -173,7 +172,7 @@ private fun configureIvyPublication(
     }
     
     // License
-    publicationDesc.licenses.firstOrNull()?.let {
+    publicationDesc.licenses?.firstOrNull()?.let {
       license {
         name.set(it.name)
         url.set(it.value)

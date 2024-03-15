@@ -7,20 +7,17 @@ import kotlin.jvm.optionals.getOrNull
  * To learn more about Gradle by exploring our Samples at https://docs.gradle.org/8.5/samples
  */
 plugins {
-  alias(libs.plugins.javamodularity.moduleplugin) apply false
-  alias(libs.plugins.uoxx3.projectEnvironment)
-  alias(libs.plugins.nexus.publish)
-  // Optional plugins
-  alias(libs.plugins.uoxx3.cjfx) apply false
+  // Required plugins
+  alias(libs.plugins.io.uoxx3.environment)
+  alias(libs.plugins.io.gradle.nexus.publish)
 }
 
 allprojects {
   // Ignore root project
   if (this == rootProject) return@allprojects
   
-  // Apply all common projects
+  // Common plugins
   apply(plugin = "io.github.uoxx3.project-environment")
-  apply(plugin = "org.javamodularity.moduleplugin")
   apply(plugin = "org.gradle.maven-publish")
   apply(plugin = "org.gradle.signing")
 }

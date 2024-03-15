@@ -7,6 +7,7 @@ import kotlin.jvm.optionals.getOrNull
 
 plugins {
   `java-library`
+  alias(libs.plugins.org.javamodularity.module)
 }
 
 /* -----------------------------------------------------
@@ -52,9 +53,13 @@ afterEvaluate {
  * ----------------------------------------------------- */
 
 val buildInfoGen by tasks.registering(TaskBuildInfoGenerator::class) {
-  projectName = "<library-name>"
-  groupName = project.group as String?
-  moduleName = "${project.group}.build"
+  projectName = projectSpec.name
+  groupName = projectSpec.group
+  // Build info configuration
+  projectSpec.buildInfo?.let {
+    moduleName = it.outPackage
+    filename = it.filename
+  }
 }
 
 val javadocJar by tasks.registering(Jar::class) {
@@ -86,12 +91,14 @@ tasks.test {
  * ----------------------------------------------------- */
 
 dependencies {
-  compileOnly(libs.org.jetbrains.annotations)
+  compileOnly(libs.java.org.jetbrains.annotations)
+  
   // Testing libraries
-  testImplementation(platform(libs.org.junit.junitJupiterBom))
-  testImplementation(libs.org.junit.junitJupiter)
-  testImplementation(libs.org.junit.junitEngine)
+  testImplementation(platform(libs.java.org.junit.jupiter.bom))
+  testImplementation(libs.java.org.junit.jupiter.jupiter)
+  testImplementation(libs.java.org.junit.jupiter.engine)
+  
   // Testing Runtime/Compile
-  testCompileOnly(libs.org.jetbrains.annotations)
-  testRuntimeOnly(libs.org.junit.junitRuntime)
+  testCompileOnly(libs.java.org.jetbrains.annotations)
+  testCompileOnly(libs.java.org.junit.jupiter.runtime)
 }

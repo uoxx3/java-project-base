@@ -29,7 +29,7 @@ data class ProjectInfoSpec(
   @JsonNames("package")
   val packageName: String,
   @JsonNames("build-info", "info-build")
-  val buildInfo: BuildInfoSpec,
+  val buildInfo: BuildInfoSpec?,
   @JsonNames("publications")
   val publications: List<PublicationInfoSpec>?)
 
@@ -45,7 +45,7 @@ data class BuildInfoSpec(
   @JsonNames("package", "package-out", "out-package")
   val outPackage: String,
   @JsonNames("file-name", "file", "name")
-  val filename: String)
+  val filename: String?)
 
 /* -----------------------------------------------------
  * Publication Types
@@ -109,7 +109,7 @@ data class PomInfoSpec(
   @JsonNames("artifact-id", "artifact-name", "artifact")
   val artifactId: String,
   @JsonNames("licenses")
-  val licenses: List<LicenseInfoSpec>,
+  val licenses: List<LicenseInfoSpec>?,
   
   @JsonNames("developers")
   val developers: Set<DeveloperInfoSpec>?,
