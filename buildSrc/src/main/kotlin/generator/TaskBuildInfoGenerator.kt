@@ -52,9 +52,6 @@ abstract class TaskBuildInfoGenerator : DefaultTask(), ITaskGenerator {
   @get:Input
   abstract val filename: Property<String>
   
-  private val conventionFilename: Property<String>
-    get() = filename.convention("build.properties")
-  
   /**
    * Method that will be executed when the task is called
    */
@@ -62,9 +59,10 @@ abstract class TaskBuildInfoGenerator : DefaultTask(), ITaskGenerator {
   override fun actionGenerator() = configureSourceSets(listOf("main")) { set ->
     // Generate resource file location
     val sourceDir = set.resources.srcDirs.firstOrNull() ?: return@configureSourceSets
+    val conventionFilename = filename.getOrElse("build.properties")
     val location = Path.of(
       sourceDir.toString(),
-      getGroupAsFileStr(moduleName.orNull, conventionFilename.get())).toFile()
+      getGroupAsFileStr(moduleName.orNull, conventionFilename)).toFile()
     
     // Combine the default properties with the extra properties
     val extraMap = extraProperties.getOrElse(mutableMapOf())

@@ -8,6 +8,7 @@ build/
 *.env
 
 ### IntelliJ IDEA ###
+.idea
 .idea/modules.xml
 .idea/workspace.xml
 .idea/jarRepositories.xml
