@@ -12,9 +12,8 @@ pluginManagement {
     mavenLocal() // Only for local testing purposes
     mavenCentral()
     google()
-    maven {
-      url = uri("https://plugins.gradle.org/m2/")
-    }
+    maven { url = uri("https://plugins.gradle.org/m2/") }
+    maven { url = uri("https://jitpack.io") }
   }
 }
 
@@ -25,9 +24,8 @@ dependencyResolutionManagement {
     mavenLocal() // Only for local testing purposes
     mavenCentral()
     google()
-    maven {
-      url = uri("https://plugins.gradle.org/m2/")
-    }
+    maven { url = uri("https://plugins.gradle.org/m2/") }
+    maven { url = uri("https://jitpack.io") }
   }
 }
 

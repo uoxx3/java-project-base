@@ -69,12 +69,16 @@ private fun configureMavenPublication(
       val artifactObj = project.tasks.findByName(artifact.taskName)
       if (artifactObj == null && artifact.required) {
         throw IllegalStateException("""
-					The task "${artifact.taskName}" is not defined within "$project" and is required for publication "${cSpec.name}"
+					The task "${artifact.taskName}" is not defined within "${project.path}" and is required for publication "${cSpec.name}"
 				""".trimIndent())
       }
       
       // Attach the artifact
-      publication.artifact(artifactObj)
+      if (artifactObj == null) {
+        System.err.println("Project ${project.path} => Artifact \"${artifact.taskName}\" not found")
+      } else {
+        publication.artifact(artifactObj)
+      }
     }
   }
   
